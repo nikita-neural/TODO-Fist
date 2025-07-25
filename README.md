@@ -1,8 +1,44 @@
-# list_app
+# TODO list
 
 A new Flutter project.
 
 ## Getting Started
+
+Запуск разработки:
+
+```bash
+flutter run
+```
+
+## Основные команды для работы с проектом
+
+- Установка зависимостей:
+    ```bash
+    flutter pub get
+    ```
+- Запуск приложения:
+    ```bash
+    flutter run
+    ```
+- Сборка APK для Android:
+    ```bash
+    flutter build apk
+    ```
+- Сборка приложения для iOS:
+    ```bash
+    flutter build ios
+    ```
+- Запуск тестов:
+    ```bash
+    flutter test
+    ```
+- Проверка кода на ошибки:
+    ```bash
+    flutter analyze
+    ```
+
+
+
 
 This project is a starting point for a Flutter application.
 
