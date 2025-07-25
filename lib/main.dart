@@ -24,14 +24,8 @@ class MyApp extends StatelessWidget {
             successColor: Colors.green,
           ),
         ],
-        // errorColor and successColor are not standard ThemeData properties.
-        // To add custom colors, use extensions or define them in the colorScheme.
-        // Example of adding custom colors via extensions:
-        // Removed CustomColors extension as it is not defined.
-        // If you want to add custom colors, define a ThemeExtension and import it.
-
       ),
-      home: const HomePage(title: 'Item List 1'),
+      home: const HomePage(title: 'TODO List'),
     );
   }
 }
