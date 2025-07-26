@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Icon Generator</title>
+</head>
+<body>
+    <canvas id="iconCanvas" width="512" height="512" style="border: 1px solid #ccc;"></canvas>
+    <br>
+    <button onclick="downloadIcon()">Download Icon</button>
+    
+    <script>
+        const canvas = document.getElementById('iconCanvas');
+        const ctx = canvas.getContext('2d');
+        
+        // Background gradient
+        const bgGradient = ctx.createLinearGradient(0, 0, 512, 512);
+        bgGradient.addColorStop(0, '#667eea');
+        bgGradient.addColorStop(1, '#764ba2');
+        
+        // Draw background with rounded corners
+        ctx.fillStyle = bgGradient;
+        roundRect(ctx, 0, 0, 512, 512, 108);
+        ctx.fill();
+        
+        // Draw white paper
+        ctx.fillStyle = '#ffffff';
+        ctx.shadowColor = 'rgba(0, 0, 0, 0.25)';
+        ctx.shadowBlur = 8;
+        ctx.shadowOffsetY = 4;
+        roundRect(ctx, 96, 80, 320, 400, 16);
+        ctx.fill();
+        ctx.shadowColor = 'transparent';
+        
+        // Draw lines
+        ctx.strokeStyle = '#e5e7eb';
+        ctx.lineWidth = 2;
+        for (let i = 0; i < 8; i++) {
+            const y = 140 + i * 40;
+            ctx.beginPath();
+            ctx.moveTo(130, y);
+            ctx.lineTo(382, y);
+            ctx.stroke();
+        }
+        
+        // Draw completed checkbox
+        const checkGradient = ctx.createLinearGradient(130, 125, 150, 145);
+        checkGradient.addColorStop(0, '#4ade80');
+        checkGradient.addColorStop(1, '#22c55e');
+        
+        ctx.fillStyle = checkGradient;
+        roundRect(ctx, 130, 125, 20, 20, 4);
+        ctx.fill();
+        
+        // Draw checkmark
+        ctx.strokeStyle = '#ffffff';
+        ctx.lineWidth = 3;
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        ctx.beginPath();
+        ctx.moveTo(135, 135);
+        ctx.lineTo(140, 140);
+        ctx.lineTo(145, 130);
+        ctx.stroke();
+        
+        // Draw empty checkboxes
+        ctx.fillStyle = '#ffffff';
+        ctx.strokeStyle = '#d1d5db';
+        ctx.lineWidth = 2;
+        
+        // Second checkbox
+        ctx.beginPath();
+        roundRect(ctx, 130, 165, 20, 20, 4);
+        ctx.fill();
+        ctx.stroke();
+        
+        // Third checkbox
+        ctx.beginPath();
+        roundRect(ctx, 130, 205, 20, 20, 4);
+        ctx.fill();
+        ctx.stroke();
+        
+        // Draw task text lines
+        ctx.fillStyle = '#10b981';
+        roundRect(ctx, 160, 128, 120, 8, 4);
+        ctx.fill();
+        
+        ctx.fillStyle = '#6ee7b7';
+        roundRect(ctx, 160, 138, 80, 6, 3);
+        ctx.fill();
+        
+        ctx.fillStyle = '#6b7280';
+        roundRect(ctx, 160, 168, 140, 8, 4);
+        ctx.fill();
+        
+        ctx.fillStyle = '#9ca3af';
+        roundRect(ctx, 160, 178, 100, 6, 3);
+        ctx.fill();
+        
+        ctx.fillStyle = '#6b7280';
+        roundRect(ctx, 160, 208, 160, 8, 4);
+        ctx.fill();
+        
+        ctx.fillStyle = '#9ca3af';
+        roundRect(ctx, 160, 218, 120, 6, 3);
+        ctx.fill();
+        
+        // Draw header decoration
+        ctx.fillStyle = bgGradient;
+        roundRect(ctx, 115, 100, 282, 4, 2);
+        ctx.fill();
+        
+        function roundRect(ctx, x, y, width, height, radius) {
+            ctx.beginPath();
+            ctx.moveTo(x + radius, y);
+            ctx.lineTo(x + width - radius, y);
+            ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+            ctx.lineTo(x + width, y + height - radius);
+            ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+            ctx.lineTo(x + radius, y + height);
+            ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+            ctx.lineTo(x, y + radius);
+            ctx.quadraticCurveTo(x, y, x + radius, y);
+            ctx.closePath();
+        }
+        
+        function downloadIcon() {
+            const link = document.createElement('a');
+            link.download = 'app_icon.png';
+            link.href = canvas.toDataURL();
+            link.click();
+        }
+    </script>
+</body>
+</html>
